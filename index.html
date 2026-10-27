@@ -1,0 +1,335 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>جعبه ویدیو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23ff6a13%27/%3E%3Cpath d=%27M12 9l11 7-11 7z%27 fill=%27%231a0a00%27/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0908;--s:#141210;--s2:#1c1916;--l:#2a2521;--fg:#f5f0ea;--mu:#a0968c;--ac:#ff6a13;--r:#ff5a5a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 Vazirmatn,Tahoma,sans-serif}
+a{color:inherit;text-decoration:none}header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--l);padding:8px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.logo{font-weight:900;font-size:19px}.logo b{color:var(--ac)}header form{flex:1;min-width:140px}
+nav{display:flex;gap:6px;flex-wrap:wrap}main{max-width:1000px;margin:0 auto;padding:16px;min-height:75vh}
+input,textarea,select{width:100%;font:inherit;color:var(--fg);background:var(--s2);border:1px solid var(--l);border-radius:10px;padding:8px 12px;margin:4px 0}
+select option{background:var(--s2)}textarea{resize:vertical;min-height:70px}
+button,.b{font:inherit;cursor:pointer;background:var(--ac);color:#1a0a00;font-weight:700;border:0;border-radius:10px;padding:7px 16px;display:inline-block}
+button:disabled{opacity:.5;cursor:default}
+.g{background:transparent;color:var(--fg);border:1px solid var(--l)}.g.on{border-color:var(--r);color:var(--r)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.grid.s{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.card{background:var(--s);border-radius:12px;overflow:hidden;border:1px solid var(--l);position:relative}.card video{width:100%;aspect-ratio:16/9;background:#000;display:block;object-fit:cover}.grid.s .card video{aspect-ratio:9/16}.card div{padding:8px 12px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--s2);object-fit:cover;display:inline-grid;place-items:center;font-weight:700;vertical-align:middle}.av.big{width:84px;height:84px;font-size:30px}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--l);flex-wrap:wrap}.mu{color:var(--mu);font-size:13px}.box{max-width:460px;margin:20px auto}
+.msgs{height:55vh;overflow:auto;background:var(--s);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.m{max-width:75%;padding:6px 12px;border-radius:12px;background:var(--s2);align-self:flex-start;white-space:pre-wrap;word-break:break-word}.m.me{align-self:flex-end;background:var(--ac);color:#1a0a00}
+video.big{width:100%;max-height:70vh;background:#000;border-radius:12px}video.big.sh{max-width:400px;max-height:80vh;display:block;margin:0 auto}.err{color:var(--r)}.ok{color:#5fd68a}
+.sec{background:var(--s);border:1px solid var(--l);border-radius:14px;padding:14px 16px;margin:14px 0}.sec h3{margin:0 0 6px}
+.bd{display:inline-block;font-size:11px;background:var(--s2);border:1px solid var(--l);border-radius:6px;padding:0 6px;color:var(--mu);margin-inline-start:4px}
+.card .bd{position:absolute;top:6px;right:6px;background:#000a;color:#fff;padding:0 6px}
+.bar{height:8px;background:var(--s2);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.rd{display:flex;gap:8px;margin:6px 0}.rd label{flex:1;border:1px solid var(--l);border-radius:10px;padding:6px 10px;cursor:pointer;display:flex;gap:6px;align-items:center}.rd input{width:auto;margin:0}
+.burger{padding:7px 10px;line-height:0}.burger svg{width:22px;height:22px}
+#ov{position:fixed;inset:0;background:#000a;z-index:9;opacity:0;pointer-events:none;transition:opacity .25s}
+#dr{position:fixed;top:0;bottom:0;left:0;width:270px;max-width:82vw;background:var(--s);border-right:1px solid var(--l);z-index:10;transform:translateX(-102%);transition:transform .25s;padding:16px;display:flex;flex-direction:column;gap:4px;overflow:auto}
+body.open #dr{transform:none}body.open #ov{opacity:1;pointer-events:auto}
+#dr a,#dr button{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;text-align:right;background:none;color:var(--fg);font-weight:400;width:100%}
+#dr a:hover,#dr button:hover{background:var(--s2)}#dr a.cur{background:var(--s2);color:var(--ac);font-weight:700}#dr hr{border:0;border-top:1px solid var(--l);margin:8px 0;width:100%}
+footer{text-align:center;padding:20px;color:var(--mu);font-size:13px}footer a{text-decoration:underline}
+.pol h3{margin-bottom:2px;color:var(--ac)}.pol p,.pol li{color:#d8d0c6}
+/* ---- motion logo ---- */
+.lgw{text-align:center}.lgw svg{width:110px;height:auto;overflow:visible}
+.lg{display:inline-block;text-align:center}.lg svg{animation:lgglow 2.4s ease-in-out 1.6s infinite}
+.lb{transform-origin:246px 354px;animation:lbin .7s cubic-bezier(.2,1.4,.4,1) both}
+.lc{transform-origin:15px 205px;animation:lcs 1.1s cubic-bezier(.3,.9,.3,1) .4s both}
+.lp{transform-origin:236px 368px;animation:lpp .6s cubic-bezier(.2,1.6,.4,1) 1.05s both}
+.lsh{animation:lsw 1s ease-in-out 1.55s both}
+.lt{font-weight:900;font-size:30px;letter-spacing:.5px;animation:ltin .8s ease 1.3s both}.lt b{color:var(--ac)}
+@keyframes lbin{from{opacity:0;transform:translateY(40px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes lcs{0%{opacity:0;transform:rotate(-46deg) translateY(-24px)}30%{opacity:1;transform:rotate(-36deg)}68%{transform:rotate(4deg)}82%{transform:rotate(-2.5deg)}100%{opacity:1;transform:none}}
+@keyframes lpp{from{opacity:0;transform:scale(0) rotate(-90deg)}to{opacity:1;transform:none}}
+@keyframes lsw{from{transform:translateX(-260px)}to{transform:translateX(620px)}}
+@keyframes ltin{from{opacity:0;transform:translateY(14px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes lgglow{0%,100%{filter:drop-shadow(0 0 6px #ff6a1344)}50%{filter:drop-shadow(0 0 26px #ff6a13aa)}}
+#splash{position:fixed;inset:0;z-index:99;background:radial-gradient(circle at 50% 45%,#1d1209,#0a0908 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:opacity .5s,transform .5s}
+#splash svg{width:170px}#splash.out{opacity:0;transform:scale(1.08);pointer-events:none}
+#splash .sk{position:absolute;bottom:22px;color:var(--mu);font-size:12px}
+@media(prefers-reduced-motion:reduce){.lb,.lc,.lp,.lsh,.lt,.lg svg{animation:none!important}}
+</style></head><body>
+<header><a class="logo" href="#/">جعبه <b>ویدیو</b></a><form id="sf"><input id="q" placeholder="جستجوی آیدی یا نام (مثلا parsa)"></form><nav id="nav"></nav>
+<button class="g burger" id="bg" aria-label="منو"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></header>
+<div id="ov"></div><aside id="dr"></aside>
+<main id="m"></main>
+<footer>© جعبه ویدیو · <a href="#/privacy">حریم خصوصی و قوانین</a></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+const SUPABASE_URL='https://hfhuamvtgrbiitxehzno.supabase.co', SUPABASE_KEY='sb_publishable_IzJ5zmE_VqDX09WRaWoUZQ_F82pF-9B';
+const OK=/^https:\/\/[\w-]+\.supabase\.co/.test(SUPABASE_URL)&&SUPABASE_KEY.length>40;
+const sb=OK?supabase.createClient(SUPABASE_URL,SUPABASE_KEY):null;
+const MAX=209715200,SHORT_MAX=180,CONTACT='Parsaxgamer65@gmail.com';
+const SQL_UP=`-- UPGRADE: اگر قبلاً SQL اولیه را اجرا کرده‌ای فقط همین را یک‌بار اجرا کن
+alter table videos add column if not exists kind text not null default 'long' check (kind in ('short','long'));
+alter table videos add column if not exists quality text not null default 'original';
+alter table videos add column if not exists description text not null default '';
+alter table videos add column if not exists views int not null default 0;
+create table if not exists likes(video uuid not null references videos on delete cascade, uid uuid not null references profiles on delete cascade, primary key(video,uid));
+alter table likes enable row level security;
+drop policy if exists l_sel on likes; drop policy if exists l_ins on likes; drop policy if exists l_del on likes;
+create policy l_sel on likes for select using(true);
+create policy l_ins on likes for insert with check(uid=auth.uid());
+create policy l_del on likes for delete using(uid=auth.uid());
+create or replace function add_view(vid uuid) returns void language sql security definer set search_path=public as $$ update videos set views=views+1 where id=vid $$;
+grant execute on function add_view(uuid) to anon, authenticated;
+update storage.buckets set file_size_limit=209715200 where id='videos';
+-- مهم: در Supabase > Storage > Settings مقدار Global file size limit را هم روی 200MB بگذار
+-- (در پلن رایگان سقف آن 50MB است و برای 200MB باید پلن Pro باشد)
+`;
+const SQL=`-- SQL اولیه (فقط برای پروژه‌ی جدید)
+create table profiles(
+ id uuid primary key references auth.users on delete cascade,
+ username text unique not null check (username ~ '^[a-z0-9_]{3,20}$'),
+ name text default '', avatar_url text default '',
+ role text not null default 'user' check (role in ('user','admin','owner')),
+ banned bool not null default false, no_upload bool not null default false, no_chat bool not null default false,
+ created_at timestamptz default now());
+create table videos(id uuid primary key default gen_random_uuid(), owner uuid not null references profiles on delete cascade,
+ title text not null, url text not null, path text not null, created_at timestamptz default now());
+create table messages(id bigint generated always as identity primary key, sender uuid not null references profiles on delete cascade,
+ receiver uuid not null references profiles on delete cascade, body text not null check(length(body)<=2000), created_at timestamptz default now());
+
+create function is_owner() returns bool language sql security definer stable set search_path=public as $$
+ select exists(select 1 from profiles where id=auth.uid() and role='owner') $$;
+create function is_staff() returns bool language sql security definer stable set search_path=public as $$
+ select exists(select 1 from profiles where id=auth.uid() and role in('admin','owner')) $$;
+create function can_do(what text) returns bool language sql security definer stable set search_path=public as $$
+ select exists(select 1 from profiles where id=auth.uid() and not banned and (case what when 'upload' then not no_upload when 'chat' then not no_chat else true end)) $$;
+
+create function handle_new_user() returns trigger language plpgsql security definer set search_path=public as $$
+declare u text; begin
+ u:=lower(regexp_replace(coalesce(new.raw_user_meta_data->>'username',split_part(new.email,'@',1)),'[^a-z0-9_]','','g'));
+ if length(u)<3 then u:='user'||substr(md5(random()::text),1,6); end if;
+ u:=left(u,20);
+ while exists(select 1 from profiles where username=u) loop u:=left(u,13)||substr(md5(random()::text),1,6); end loop;
+ insert into profiles(id,username,name,avatar_url) values(new.id,u,coalesce(new.raw_user_meta_data->>'full_name',''),coalesce(new.raw_user_meta_data->>'avatar_url',''));
+ return new; end $$;
+create trigger on_signup after insert on auth.users for each row execute function handle_new_user();
+
+create function guard_profile() returns trigger language plpgsql security definer set search_path=public as $$
+begin if auth.uid() is not null and not is_owner() then
+ new.role:=old.role; new.banned:=old.banned; new.no_upload:=old.no_upload; new.no_chat:=old.no_chat; end if; return new; end $$;
+create trigger guard before update on profiles for each row execute function guard_profile();
+
+alter table profiles enable row level security; alter table videos enable row level security; alter table messages enable row level security;
+create policy p_sel on profiles for select using(true);
+create policy p_upd on profiles for update using(id=auth.uid() or is_owner());
+create policy v_sel on videos for select using(true);
+create policy v_ins on videos for insert with check(owner=auth.uid() and can_do('upload'));
+create policy v_del on videos for delete using(owner=auth.uid() or is_staff());
+create policy m_sel on messages for select using(sender=auth.uid() or receiver=auth.uid());
+create policy m_ins on messages for insert with check(sender=auth.uid() and can_do('chat'));
+
+insert into storage.buckets(id,name,public,file_size_limit) values('videos','videos',true,52428800),('avatars','avatars',true,5242880) on conflict do nothing;
+create policy s_read on storage.objects for select using(bucket_id in('videos','avatars'));
+create policy s_ins on storage.objects for insert to authenticated with check(bucket_id in('videos','avatars') and (storage.foldername(name))[1]=auth.uid()::text and (bucket_id='avatars' or can_do('upload')));
+create policy s_upd on storage.objects for update to authenticated using(bucket_id='avatars' and (storage.foldername(name))[1]=auth.uid()::text);
+create policy s_del on storage.objects for delete to authenticated using((storage.foldername(name))[1]=auth.uid()::text or is_staff());
+
+-- AFTER the owner has signed up once, run this to make that account the owner:
+-- update profiles set role='owner' where id=(select id from auth.users where email='Parsaxgamer65@gmail.com');
+`;
+let me=null,timer=null;const $=s=>document.querySelector(s),M=()=>$('#m');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const av=(p,c='')=>p.avatar_url?`<img class="av ${c}" src="${esc(p.avatar_url)}" alt="">`:`<span class="av ${c}">${esc((p.name||p.username||'?')[0].toUpperCase())}</span>`;
+const tag=p=>p.role==='owner'?' 👑':p.role==='admin'?' 🛡️':p.banned?' 🚫':'';
+const fa=n=>Number(n||0).toLocaleString('fa-IR');
+const mb=b=>(b/1048576).toFixed(1);
+const logo=k=>`<svg viewBox="0 0 500 520" xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="g${k}" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#ff9a0d"/><stop offset="1" stop-color="#ff5a0a"/></linearGradient>
+<linearGradient id="h${k}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="c${k}"><path d="M50 226L452 200Q483 198 483 235V440Q483 508 415 508H80Q10 508 10 440V250Q10 226 50 226Z"/><path d="M50 115L400 18Q440 10 452 50L470 117L15 205L10 170Q10 125 50 115Z"/></clipPath></defs>
+<g class="lb"><path fill="url(#g${k})" d="M50 226L452 200Q483 198 483 235V440Q483 508 415 508H80Q10 508 10 440V250Q10 226 50 226Z"/>
+<path class="lp" d="M175 312L318 368L175 430Z" fill="#0a0908" stroke="#0a0908" stroke-width="26" stroke-linejoin="round"/></g>
+<path class="lc" fill="url(#g${k})" d="M50 115L400 18Q440 10 452 50L470 117L15 205L10 170Q10 125 50 115Z"/>
+<g clip-path="url(#c${k})"><rect class="lsh" x="0" y="0" width="120" height="520" fill="url(#h${k})" transform="skewX(-20)"/></g></svg>`;
+/* ---------- drawer ---------- */
+const drawer=o=>document.body.classList.toggle('open',o);
+$('#bg').onclick=()=>drawer(!document.body.classList.contains('open'));$('#ov').onclick=()=>drawer(false);
+$('#dr').onclick=async e=>{if(e.target.closest('[data-lo]')){await sb.auth.signOut();await loadMe();location.hash='#/'}if(e.target.closest('a,[data-lo]'))drawer(false)};
+function menu(){const h=location.hash||'#/';const it=[['#/','🏠','خانه'],['#/shorts','⚡','ویدیو شورت'],['#/long','🎬','ویدیو لانگ'],['#/upload','⬆️','آپلود ویدیو'],['#/chat/','💬','پیام‌ها'],['#/me','👤','حساب کاربری']];
+ if(me&&me.role==='owner')it.push(['#/admin','🛠️','مدیریت']);
+ $('#dr').innerHTML=`<div class="logo" style="padding:4px 12px 10px">جعبه <b>ویدیو</b></div>`+(me?`<a href="#/u/${me.username}" style="gap:10px">${av(me)}<span><b>${esc(me.name||me.username)}</b><br><span class="mu">@${me.username}</span></span></a><hr>`:'')+
+ it.map(([l,i,t])=>`<a href="${l}" class="${h===l?'cur':''}"><span>${i}</span>${t}</a>`).join('')+'<hr><a href="#/privacy"><span>🔒</span>حریم خصوصی و قوانین</a>'+(me?'<button data-lo><span>🚪</span>خروج</button>':'<a href="#/auth"><span>🔑</span>ورود / ثبت‌نام</a>')}
+/* ---------- core ---------- */
+async function loadMe(){const{data:{session}}=await sb.auth.getSession();me=null;
+ if(session){const{data}=await sb.from('profiles').select('*').eq('id',session.user.id).single();me=data}
+ $('#nav').innerHTML=me?`<a class="b g" href="#/upload">آپلود</a>`:'<a class="b" href="#/auth">ورود / ثبت‌نام</a>';menu()}
+$('#sf').onsubmit=e=>{e.preventDefault();location.hash='#/s/'+encodeURIComponent($('#q').value.trim().replace(/^@/,''))};
+async function route(){clearInterval(timer);M().onclick=null;menu();scrollTo(0,0);const h=location.hash;if(h==='#/privacy')return privacy();if(!OK||h==='#/setup')return setup();const[,p,a]=(h||'#/').split('/');const x=decodeURIComponent(a||'');
+ try{await({auth,u:chan,chat,upload,me:prof,admin,s:search,v:watch,shorts:()=>feed('short'),long:()=>feed('long')}[p]||home)(x)}catch(e){M().innerHTML='<p class="err">خطا: '+esc(e.message)+'</p>'}}
+const need=()=>{if(!me){location.hash='#/auth';return 1}if(me.banned){M().innerHTML='<p class="err">حساب شما بن شده است.</p>';return 1}};
+function cards(v,s){return v.length?`<div class="grid ${s?'s':''}">${v.map(x=>`<a class="card" href="#/v/${x.id}"><video src="${esc(x.url)}#t=0.5" preload="metadata" muted></video>${x.quality&&x.quality!=='original'?`<span class="bd">${esc(x.quality)}</span>`:''}<div><b>${esc(x.title)}</b><div class="mu" style="padding:0">${esc(x.profiles.username)} · ${fa(x.views)} بازدید</div></div></a>`).join('')}</div>`:'<p class="mu">ویدیویی نیست.</p>'}
+async function home(){const{data}=await sb.from('videos').select('*,profiles(username)').order('created_at',{ascending:false}).limit(60);M().innerHTML='<h2>تازه‌ها</h2>'+cards(data||[])}
+async function feed(k){const{data,error}=await sb.from('videos').select('*,profiles(username)').eq('kind',k).order('created_at',{ascending:false}).limit(60);
+ if(error)return M().innerHTML='<p class="err">برای این بخش باید «SQL آپگرید» را یک بار در Supabase اجرا کنی (صفحه <a href="#/setup" style="text-decoration:underline">راه‌اندازی</a>).<br><span class="mu">'+esc(error.message)+'</span></p>';M().innerHTML=`<h2>${k==='short'?'⚡ ویدیو شورت':'🎬 ویدیو لانگ'}</h2>`+cards(data||[],k==='short')}
+async function watch(id){const{data:v}=await sb.from('videos').select('*,profiles(*)').eq('id',id).single();if(!v)return M().innerHTML='پیدا نشد';
+ sb.rpc('add_view',{vid:id}).then(()=>{},()=>{});
+ const can=me&&(me.id===v.owner||me.role!=='user');
+ const{count}=await sb.from('likes').select('uid',{count:'exact',head:true}).eq('video',id);let liked=false,n=count||0;
+ if(me){const{data:l}=await sb.from('likes').select('uid').eq('video',id).eq('uid',me.id).maybeSingle();liked=!!l}
+ M().innerHTML=`<video class="big ${v.kind==='short'?'sh':''}" src="${esc(v.url)}" controls autoplay playsinline></video><h2>${esc(v.title)} <span class="bd">${v.kind==='short'?'شورت':'لانگ'}</span>${v.quality&&v.quality!=='original'?`<span class="bd">${esc(v.quality)}</span>`:''}</h2>
+ <div class="mu">${fa((v.views||0)+1)} بازدید · ${new Date(v.created_at).toLocaleDateString('fa-IR')}</div>
+ <a class="row" href="#/u/${v.profiles.username}">${av(v.profiles)} <b>${esc(v.profiles.name||v.profiles.username)}</b>${tag(v.profiles)}</a>
+ <div class="row" style="border:0"><button class="g" id="lk"></button><button class="g" id="sh">🔗 کپی لینک</button>${can?'<button class="g" id="del" style="color:var(--r)">حذف</button>':''}</div>
+ ${v.description?`<p style="white-space:pre-wrap">${esc(v.description)}</p>`:''}`;
+ const dr=()=>$('#lk').textContent=(liked?'❤️ ':'🤍 ')+fa(n);dr();
+ $('#lk').onclick=async()=>{if(!me){location.hash='#/auth';return}if(me.banned)return;
+  if(liked){const{error}=await sb.from('likes').delete().eq('video',id).eq('uid',me.id);if(!error){liked=false;n--}}
+  else{const{error}=await sb.from('likes').insert({video:id,uid:me.id});if(!error){liked=true;n++}}dr()};
+ $('#sh').onclick=()=>{const u=location.href;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>$('#sh').textContent='کپی شد ✓').catch(()=>prompt('لینک:',u))};
+ if(can)$('#del').onclick=async()=>{if(!confirm('حذف شود؟'))return;await sb.storage.from('videos').remove([v.path]);await sb.from('videos').delete().eq('id',v.id);location.hash='#/'}}
+async function search(t){const c=t.replace(/[%,()]/g,'');const{data}=await sb.from('profiles').select('*').or(`username.ilike.%${c}%,name.ilike.%${c}%`).limit(30);
+ const{data:vs}=await sb.from('videos').select('*,profiles(username)').ilike('title',`%${c}%`).limit(30);
+ M().innerHTML=`<h2>نتایج «${esc(t)}»</h2>`+((data||[]).map(p=>`<a class="row" href="#/u/${p.username}">${av(p)}<span><b>${esc(p.name||p.username)}</b>${tag(p)}<br><span class="mu">@${p.username}</span></span></a>`).join('')||'<p class="mu">کاربری پیدا نشد.</p>')+((vs||[]).length?'<h3>ویدیوها</h3>'+cards(vs):'')}
+async function chan(un){const{data:p}=await sb.from('profiles').select('*').eq('username',un).single();if(!p)return M().innerHTML='کاربر پیدا نشد';
+ const{data:v}=await sb.from('videos').select('*,profiles(username)').eq('owner',p.id).order('created_at',{ascending:false});
+ M().innerHTML=`<div class="row">${av(p,'big')}<div><h2 style="margin:0">${esc(p.name||p.username)}${tag(p)}</h2><span class="mu">@${p.username}</span></div>${me&&me.id!==p.id?`<a class="b" href="#/chat/${p.username}">پیام</a>`:''}</div>`+cards(v||[])}
+async function chat(un){if(need())return;
+ if(!un){const{data}=await sb.from('messages').select('sender,receiver').or(`sender.eq.${me.id},receiver.eq.${me.id}`).order('id',{ascending:false}).limit(300);
+  const ids=[...new Set((data||[]).map(m=>m.sender===me.id?m.receiver:m.sender))];
+  const{data:ps}=ids.length?await sb.from('profiles').select('*').in('id',ids):{data:[]};
+  M().innerHTML='<h2>پیام‌ها</h2>'+(ids.map(i=>ps.find(p=>p.id===i)).filter(Boolean).map(p=>`<a class="row" href="#/chat/${p.username}">${av(p)}<b>${esc(p.name||p.username)}</b></a>`).join('')||'<p class="mu">برای شروع، آیدی دوستت را بالا جستجو کن.</p>');return}
+ const{data:p}=await sb.from('profiles').select('*').eq('username',un).single();if(!p)return M().innerHTML='کاربر پیدا نشد';
+ M().innerHTML=`<a class="row" href="#/u/${p.username}">${av(p)}<b>${esc(p.name||p.username)}</b></a><div class="msgs" id="ms"></div>${me.no_chat?'<p class="err">اجازه چت ندارید.</p>':'<form id="cf" class="row"><input id="tx" style="flex:1" placeholder="پیام..." autocomplete="off"><button>ارسال</button></form>'}`;
+ const load=async()=>{const{data}=await sb.from('messages').select('*').or(`and(sender.eq.${me.id},receiver.eq.${p.id}),and(sender.eq.${p.id},receiver.eq.${me.id})`).order('id').limit(200);
+  const b=$('#ms');if(!b)return;const k=b.scrollTop+b.clientHeight>=b.scrollHeight-40;b.innerHTML=(data||[]).map(m=>`<div class="m ${m.sender===me.id?'me':''}">${esc(m.body)}</div>`).join('');if(k)b.scrollTop=b.scrollHeight};
+ await load();$('#ms').scrollTop=1e9;timer=setInterval(load,3000);
+ if($('#cf'))$('#cf').onsubmit=async e=>{e.preventDefault();const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';const{error}=await sb.from('messages').insert({sender:me.id,receiver:p.id,body:t});if(error)alert('ارسال نشد: '+error.message);await load();$('#ms').scrollTop=1e9}}
+/* ---------- upload + quality ---------- */
+function meta(file){return new Promise((res,rej)=>{const v=document.createElement('video');v.preload='metadata';v.onloadedmetadata=()=>{res({d:v.duration,h:v.videoHeight});URL.revokeObjectURL(v.src)};v.onerror=()=>rej(new Error('فایل ویدیویی معتبر نیست'));v.src=URL.createObjectURL(file)})}
+async function transcode(file,h,onp){
+ if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream)throw new Error('مرورگر پشتیبانی نمی‌کند');
+ const v=document.createElement('video');v.src=URL.createObjectURL(file);v.playsInline=true;v.muted=true;
+ await new Promise((r,j)=>{v.onloadedmetadata=r;v.onerror=()=>j(new Error('خطا در خواندن ویدیو'))});
+ if(v.videoHeight<=h){URL.revokeObjectURL(v.src);return[file,false]}
+ const w=Math.round(v.videoWidth*h/v.videoHeight/2)*2,c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');
+ const out=c.captureStream(30);let ac;
+ try{ac=new(window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaElementSource(v),dst=ac.createMediaStreamDestination();src.connect(dst);dst.stream.getAudioTracks().forEach(t=>out.addTrack(t))}catch(e){}
+ const mt=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm','video/mp4'].find(t=>MediaRecorder.isTypeSupported(t));if(!mt)throw new Error('کدک پشتیبانی نمی‌شود');
+ const br={1080:5e6,720:2.5e6,480:1.2e6,360:7e5}[h]||2e6,rec=new MediaRecorder(out,{mimeType:mt,videoBitsPerSecond:br}),parts=[];
+ rec.ondataavailable=e=>e.data.size&&parts.push(e.data);
+ await new Promise((res,rej)=>{rec.onstop=res;rec.onerror=()=>rej(new Error('خطا در فشرده‌سازی'));v.onended=()=>rec.stop();
+  const draw=()=>{if(v.ended||v.paused&&v.currentTime>0&&rec.state==='inactive')return;ctx.drawImage(v,0,0,w,h);onp&&onp(Math.min(99,Math.round(v.currentTime/v.duration*100)));requestAnimationFrame(draw)};
+  rec.start(1000);v.muted=false;if(ac&&ac.state==='suspended')ac.resume();v.play().then(draw).catch(rej)});
+ if(ac)ac.close();URL.revokeObjectURL(v.src);
+ return[new File(parts,'v',{type:mt.split(';')[0]}),true]}
+async function upload(){if(need())return;if(me.no_upload)return M().innerHTML='<p class="err">اجازه آپلود ندارید.</p>';
+ M().innerHTML=`<div class="box"><h2>آپلود ویدیو</h2><input id="t" placeholder="عنوان" maxlength="100"><textarea id="ds" placeholder="توضیحات (اختیاری)" maxlength="1000"></textarea>
+ <label>نوع ویدیو</label><div class="rd"><label><input type="radio" name="k" value="long" checked>🎬 لانگ</label><label><input type="radio" name="k" value="short">⚡ شورت (تا ${SHORT_MAX} ثانیه)</label></div>
+ <label>کیفیت</label><select id="q2"><option value="original">اصلی (بدون تغییر)</option><option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option><option value="360">360p</option></select>
+ <p class="mu">کیفیت کمتر از اصلی در مرورگر خودت و هم‌زمان با پخش ویدیو فشرده می‌شود (زمانش حدود طول ویدیو است و باید تب باز بماند). اگر ویدیو از کیفیت انتخابی کوچک‌تر باشد بزرگ نمی‌شود.</p>
+ <input id="f" type="file" accept="video/*"><p class="mu">حداکثر ${mb(MAX)} مگابایت</p><div class="bar" id="br" style="display:none"><i></i></div>
+ <button id="go">آپلود</button> <span id="st" class="mu"></span></div>`;
+ const st=$('#st');
+ $('#go').onclick=async()=>{const f=$('#f').files[0],t=$('#t').value.trim()||'بدون نام',kind=document.querySelector('[name=k]:checked').value,q=$('#q2').value;if(!f)return st.textContent='یک فایل انتخاب کن';
+  if(f.size>MAX)return st.textContent=`فایل بیشتر از ${mb(MAX)} مگابایت است`;
+  $('#go').disabled=true;st.className='mu';const fail=m=>{if(/maximum allowed size|too large|413/i.test(m))m='حجم فایل از سقف تنظیم‌شده‌ی Supabase بیشتر است (در پلن رایگان ۵۰ مگابایت). کیفیت کمتر انتخاب کن یا سقف را در Storage ← Settings بالا ببر.';st.className='err';st.textContent=m;$('#go').disabled=false};
+  let file=f,applied=false;
+  try{const m=await meta(f);if(kind==='short'&&m.d>SHORT_MAX)return fail(`ویدیو شورت باید حداکثر ${SHORT_MAX} ثانیه باشد`)}catch(e){return fail(e.message)}
+  if(q!=='original'){$('#br').style.display='block';try{[file,applied]=await transcode(f,+q,p=>{st.textContent=`در حال فشرده‌سازی ${p}٪ — تب را باز نگه دار`;$('#br i').style.width=p+'%'})}catch(e){file=f;applied=false;st.textContent='فشرده‌سازی ممکن نشد؛ نسخه اصلی آپلود می‌شود…'}$('#br').style.display='none'}
+  if(file.size>MAX)return fail(`حجم نهایی بیشتر از ${mb(MAX)} مگابایت است`);
+  st.textContent='در حال آپلود...';
+  const ext=file.type.includes('webm')?'webm':file.type.includes('mp4')?'mp4':(f.name.split('.').pop()||'mp4').replace(/[^a-z0-9]/gi,'');
+  const path=`${me.id}/${Date.now()}.${ext}`;
+  let r=await sb.storage.from('videos').upload(path,file,{contentType:file.type||'video/mp4'});if(r.error)return fail(r.error.message);
+  const url=sb.storage.from('videos').getPublicUrl(path).data.publicUrl;
+  const row={owner:me.id,title:t,description:$('#ds').value.trim(),kind,quality:applied?q+'p':'original',url,path};
+  r=await sb.from('videos').insert(row);
+  if(r.error&&(r.error.code==='PGRST204'||/schema cache|column/i.test(r.error.message))){
+   r=await sb.from('videos').insert({owner:me.id,title:t,url,path});
+   if(!r.error)alert('ویدیو آپلود شد، اما «SQL آپگرید» هنوز در Supabase اجرا نشده؛ تا آن را اجرا نکنی نوع (شورت/لانگ)، کیفیت و توضیحات ذخیره نمی‌شوند. صفحه #/setup را ببین.')}
+  if(r.error){await sb.storage.from('videos').remove([path]);return fail(r.error.message)}location.hash='#/u/'+me.username}}
+/* ---------- account ---------- */
+function TR(m){m=String(m||'');const t=[[/different from the old/i,'رمز جدید باید با رمز قبلی فرق داشته باشد'],[/at least \d+ char/i,'رمز خیلی کوتاه است'],[/rate limit|security purposes|only request this after/i,'درخواست‌های زیاد؛ چند دقیقه بعد دوباره امتحان کن'],[/already (been )?registered|already exists|email_exists/i,'این ایمیل قبلاً استفاده شده است'],[/invalid.*email|email.*invalid|unable to validate email/i,'ایمیل نامعتبر است'],[/jwt|not authenticated|session missing|session_not_found/i,'نشست ورود تمام شده؛ دوباره وارد شو'],[/row-level security|violates/i,'دسترسی لازم را نداری'],[/failed to fetch|network/i,'اتصال اینترنت مشکل دارد'],[/reauth/i,'برای این کار باید دوباره وارد شوی']];for(const[r,x]of t)if(r.test(m))return x;return m}
+async function prof(){if(need())return;
+ const msg=(id,t,ok)=>{const e=document.getElementById(id);if(e){e.className=ok?'ok':'err';e.textContent=t}};
+ let user=null;try{user=(await sb.auth.getUser()).data.user}catch(e){}
+ M().innerHTML=`<div class="box" style="max-width:520px">
+ <div class="row" style="border:0"><span id="acAv">${av(me,'big')}</span><div><h2 style="margin:0">${esc(me.name||me.username)}${tag(me)}</h2><span class="mu">@${esc(me.username)}</span></div></div>
+ <div class="sec"><h3>پروفایل</h3>
+  <label>عکس پروفایل</label><input id="acPhoto" type="file" accept="image/*">
+  <label>نام</label><input id="acName" maxlength="40" value="${esc(me.name)}">
+  <label>آیدی (فقط a-z 0-9 _)</label><input id="acUser" dir="ltr" value="${esc(me.username)}">
+  <button id="acSaveBtn">ذخیره پروفایل</button> <span id="acSaveMsg"></span></div>
+ <div class="sec"><h3>ایمیل</h3>
+  <input id="acEmail" type="email" dir="ltr" value="${esc(user?.email||'')}">
+  <button id="acMailBtn">تغییر ایمیل</button> <span id="acMailMsg"></span>
+  <p class="mu">یک لینک تأیید برای ایمیل جدید فرستاده می‌شود.</p></div>
+ <div class="sec"><h3>رمز عبور</h3>
+  <input id="acPw1" type="password" dir="ltr" placeholder="رمز جدید" autocomplete="new-password">
+  <input id="acPw2" type="password" dir="ltr" placeholder="تکرار رمز جدید" autocomplete="new-password">
+  <button id="acPwBtn">تغییر رمز</button> <span id="acPwMsg"></span></div>
+ <button class="g" id="acOut">خروج از حساب</button></div>`;
+ const g=id=>document.getElementById(id);
+ const busy=async(btn,mid,fn)=>{btn.disabled=true;msg(mid,'در حال انجام...',1);try{await fn()}catch(e){msg(mid,TR(e.message))}btn.disabled=false};
+ g('acPhoto').onchange=()=>{const f=g('acPhoto').files[0];if(f)g('acAv').innerHTML=`<img class="av big" src="${URL.createObjectURL(f)}" alt="">`};
+ g('acOut').onclick=async()=>{await sb.auth.signOut();await loadMe();location.hash='#/'};
+ g('acSaveBtn').onclick=()=>busy(g('acSaveBtn'),'acSaveMsg',async()=>{
+  const un=g('acUser').value.trim().toLowerCase();
+  if(!/^[a-z0-9_]{3,20}$/.test(un))return msg('acSaveMsg','آیدی نامعتبر است (۳ تا ۲۰ حرف انگلیسی/عدد/_)');
+  const up={name:g('acName').value.trim().slice(0,40),username:un},f=g('acPhoto').files[0];
+  if(f){if(!f.type.startsWith('image/'))return msg('acSaveMsg','فقط فایل عکس مجاز است');if(f.size>5242880)return msg('acSaveMsg','عکس بیشتر از ۵ مگابایت است');
+   const path=`${me.id}/avatar`,r=await sb.storage.from('avatars').upload(path,f,{upsert:true,contentType:f.type});if(r.error)return msg('acSaveMsg',TR(r.error.message));
+   up.avatar_url=sb.storage.from('avatars').getPublicUrl(path).data.publicUrl+'?t='+Date.now()}
+  const{data,error}=await sb.from('profiles').update(up).eq('id',me.id).select();
+  if(error)return msg('acSaveMsg',error.code==='23505'?'این آیدی گرفته شده':TR(error.message));
+  if(!data||!data.length)return msg('acSaveMsg','ذخیره نشد؛ دوباره وارد شو');
+  await loadMe();await prof();msg('acSaveMsg','ذخیره شد ✓',1)});
+ g('acMailBtn').onclick=()=>busy(g('acMailBtn'),'acMailMsg',async()=>{
+  if(!user)return msg('acMailMsg','نشست ورود تمام شده؛ دوباره وارد شو');
+  const e=g('acEmail').value.trim().toLowerCase();
+  if(!/^\S+@\S+\.\S+$/.test(e))return msg('acMailMsg','ایمیل نامعتبر است');
+  if(e===(user.email||'').toLowerCase())return msg('acMailMsg','ایمیل جدیدی وارد نشده');
+  const{error}=await sb.auth.updateUser({email:e},{emailRedirectTo:location.origin+location.pathname});
+  msg('acMailMsg',error?TR(error.message):'ایمیل تأیید ارسال شد ✓',!error)});
+ g('acPwBtn').onclick=()=>busy(g('acPwBtn'),'acPwMsg',async()=>{
+  const a=g('acPw1').value;
+  if(a.length<6)return msg('acPwMsg','رمز حداقل ۶ کاراکتر باشد');
+  if(a!==g('acPw2').value)return msg('acPwMsg','رمز و تکرارش یکی نیست');
+  const{error}=await sb.auth.updateUser({password:a});
+  if(!error){g('acPw1').value=g('acPw2').value=''}
+  msg('acPwMsg',error?TR(error.message):'رمز تغییر کرد ✓',!error)})}
+async function admin(){if(!me||me.role!=='owner')return M().innerHTML='دسترسی ندارید';
+ const{data}=await sb.from('profiles').select('*').order('created_at',{ascending:false}).limit(200);
+ M().innerHTML='<h2>مدیریت کاربران</h2>'+data.map(p=>`<div class="row" data-id="${p.id}">${av(p)}<b style="flex:1">@${p.username}${tag(p)}</b>${p.role==='owner'?'<span class="mu">owner</span>':[['role','ادمین'],['banned','بن'],['no_upload','بدون آپلود'],['no_chat','بدون چت']].map(([k,l])=>`<button class="g ${(k==='role'?p.role==='admin':p[k])?'on':''}" data-k="${k}">${l}</button>`).join('')}</div>`).join('');
+ M().onclick=async e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k,id=b.closest('[data-id]').dataset.id,p=data.find(x=>x.id===id);
+  const up=k==='role'?{role:p.role==='admin'?'user':'admin'}:{[k]:!p[k]};const{error}=await sb.from('profiles').update(up).eq('id',id);if(error)alert(error.message);else admin()}}
+/* ---------- privacy ---------- */
+function privacy(){M().innerHTML=`<div class="pol" style="max-width:760px;margin:auto"><h2>حریم خصوصی و قوانین استفاده</h2><p class="mu">آخرین به‌روزرسانی: ۱۴۰۵ — این متن توضیح می‌دهد «جعبه ویدیو» با اطلاعات شما چه می‌کند.</p>
+<h3>۱. چه اطلاعاتی جمع می‌کنیم</h3><ul><li>ایمیل و رمز عبور (رمز به‌صورت هش‌شده نگهداری می‌شود و برای ما قابل مشاهده نیست).</li><li>آیدی، نام و عکس پروفایل (شماره تلفن از کاربران گرفته نمی‌شود).</li><li>ویدیوهایی که آپلود می‌کنی، عنوان و توضیحات، لایک‌ها و تعداد بازدید.</li><li>پیام‌هایی که در چت می‌فرستی.</li><li>اگر با گوگل وارد شوی، نام، ایمیل و عکس حساب گوگلت دریافت می‌شود.</li></ul>
+<h3>۲. چه چیزی عمومی است</h3><p>آیدی، نام، عکس پروفایل و ویدیوهای آپلودشده برای همه قابل مشاهده است. ایمیل شما نمایش عمومی ندارد. پیام‌ها فقط برای فرستنده و گیرنده نمایش داده می‌شوند.</p>
+<h3>۳. نحوه استفاده</h3><p>اطلاعات فقط برای اجرای سرویس (ورود، نمایش پروفایل و ویدیو، چت، مدیریت تخلفات و امنیت) استفاده می‌شود. اطلاعات شما فروخته نمی‌شود و برای تبلیغات به شخص ثالث داده نمی‌شود.</p>
+<h3>۴. نگهداری و سرویس‌های ثالث</h3><p>داده‌ها روی سرویس Supabase ذخیره می‌شوند و فایل‌های فونت از Google Fonts بارگذاری می‌شود. مرورگر شما برای ماندن در حساب، نشست ورود را در حافظه محلی (localStorage) ذخیره می‌کند. به‌دلیل ماهیت فنی سرویس، مدیر سایت از نظر فنی به پایگاه داده دسترسی دارد؛ ما آن را جز برای رفع مشکل یا بررسی گزارش تخلف نمی‌خوانیم.</p>
+<h3>۵. قوانین محتوا</h3><ul><li>آپلود محتوای غیرقانونی، خشونت شدید، محتوای جنسی، آزار و تهدید، نقض حق کپی‌رایت و محتوایی که کودکان را در خطر قرار دهد ممنوع است.</li><li>اسپم، جعل هویت و آزار کاربران ممنوع است.</li><li>فقط ویدیویی را آپلود کن که حق انتشارش را داری.</li><li>مدیران می‌توانند ویدیوهای متخلف را حذف و حساب‌ها را محدود یا مسدود کنند.</li></ul>
+<h3>۶. حجم و کیفیت</h3><p>حداکثر حجم هر ویدیو ${mb(MAX)} مگابایت است. ویدیوی شورت حداکثر ${SHORT_MAX} ثانیه است. فشرده‌سازی کیفیت در مرورگر خودت انجام می‌شود و ممکن است کیفیت نهایی با فایل اصلی تفاوت داشته باشد.</p>
+<h3>۷. حقوق شما</h3><p>می‌توانی هر زمان اطلاعات پروفایل، ایمیل و رمز را از بخش «حساب کاربری» تغییر دهی و ویدیوهایت را حذف کنی. برای حذف کامل حساب و داده‌ها یا هر پرسش درباره حریم خصوصی به ایمیل <a dir="ltr" href="mailto:${CONTACT}" style="text-decoration:underline">${CONTACT}</a> پیام بده.</p>
+<h3>۸. سن کاربران</h3><p>استفاده از سایت برای کودکان زیر ۱۳ سال بدون اجازه والدین توصیه نمی‌شود.</p>
+<h3>۹. تغییرات</h3><p>ممکن است این متن به‌روزرسانی شود؛ ادامه استفاده از سایت به‌معنی پذیرش نسخه جدید است.</p></div>`}
+/* ---------- setup ---------- */
+function setup(){const blk=(i,t)=>`<button data-c="${i}">کپی</button><pre id="${i}" dir="ltr" style="user-select:text;background:var(--s);border:1px solid var(--l);border-radius:10px;padding:12px;overflow:auto;max-height:40vh;font-size:12px;white-space:pre-wrap">${esc(t)}</pre>`;
+ M().innerHTML=`<div class="box" style="max-width:760px"><h2>راه‌اندازی</h2>${OK?'':'<p class="err">کلیدهای Supabase هنوز داخل فایل وارد نشده‌اند.</p>'}
+ <ol><li>در supabase.com یک پروژه بساز و SUPABASE_URL و SUPABASE_KEY را در ابتدای script بگذار.</li><li>پروژه‌ی جدید: ابتدا SQL اولیه و بعد SQL آپگرید را اجرا کن. پروژه‌ی قبلی: فقط SQL آپگرید.</li><li>در Authentication ← URL Configuration آدرس سایت را در Site URL و Redirect URLs بگذار.</li><li>بعد از اولین ثبت‌نام خودت، خط آخر SQL اولیه را با ایمیل خودت اجرا کن.</li></ol>
+ <h3>SQL آپگرید</h3>${blk('s1',SQL_UP)}<h3>SQL اولیه</h3>${blk('s2',SQL)}</div>`;
+ M().onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;const t=$('#'+b.dataset.c).textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>b.textContent='کپی شد ✓').catch(()=>{const r=document.createRange();r.selectNodeContents($('#'+b.dataset.c));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent='Ctrl+C بزن'})}}
+function auth(){let mode='in';M().innerHTML=`<div class="box" style="margin-bottom:0"><div class="lgw"><div class="lg">${logo('a')}<div class="lt" style="font-size:24px">جعبه <b>ویدیو</b></div></div></div></div><div id="af"></div>`;const draw=()=>{$('#af').innerHTML=`<div class="box"><div class="row"><button class="${mode==='in'?'':'g'}" id="a1">ورود</button><button class="${mode==='up'?'':'g'}" id="a2">ثبت‌نام</button></div>
+ <input id="em" type="email" dir="ltr" placeholder="ایمیل">${mode==='up'?'<input id="un" dir="ltr" placeholder="آیدی دلخواه (انگلیسی)">':''}<input id="pw" type="password" dir="ltr" placeholder="رمز عبور">${mode==='up'?'<input id="p2" type="password" dir="ltr" placeholder="تکرار رمز عبور"><p class="mu">با ساخت حساب، <a href="#/privacy" style="text-decoration:underline">قوانین و حریم خصوصی</a> را می‌پذیری.</p>':''}
+ <button id="go" style="width:100%;margin-top:8px">${mode==='in'?'ورود':'ساخت حساب'}</button><button class="g" id="gg" style="width:100%;margin-top:8px">ورود با حساب گوگل</button><p id="st" class="err"></p></div>`;
+ $('#a1').onclick=()=>{mode='in';draw()};$('#a2').onclick=()=>{mode='up';draw()};
+ $('#gg').onclick=()=>sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});
+ $('#go').onclick=async()=>{const st=$('#st'),email=$('#em').value.trim(),pw=$('#pw').value;let r;
+  if(mode==='up'){const un=$('#un').value.trim().toLowerCase();if(!/^[a-z0-9_]{3,20}$/.test(un))return st.textContent='آیدی نامعتبر است (۳ تا ۲۰ حرف انگلیسی/عدد/_)';
+   if(pw.length<6)return st.textContent='رمز حداقل ۶ کاراکتر باشد';if(pw!==$('#p2').value)return st.textContent='رمز و تکرارش یکی نیست';
+   const{data:ex}=await sb.from('profiles').select('id').eq('username',un).maybeSingle();if(ex)return st.textContent='این آیدی گرفته شده';
+   r=await sb.auth.signUp({email,password:pw,options:{data:{username:un}}});if(!r.error&&!r.data.session)return st.textContent='ایمیل تأیید برایت فرستاده شد؛ بعد از تأیید وارد شو.'}
+  else r=await sb.auth.signInWithPassword({email,password:pw});
+  if(r.error)return st.textContent=r.error.message;await loadMe();location.hash='#/'}};draw()}
+(()=>{let seen=0;try{seen=sessionStorage.getItem('sp')}catch(e){}if(seen)return;try{sessionStorage.setItem('sp','1')}catch(e){}
+ const s=document.createElement('div');s.id='splash';s.innerHTML=`<div class="lg">${logo('s')}<div class="lt">جعبه <b>ویدیو</b></div></div><div class="sk">برای رد شدن بزن</div>`;document.body.appendChild(s);
+ const close=()=>{s.classList.add('out');setTimeout(()=>s.remove(),600)};s.onclick=close;setTimeout(close,3400)})();
+window.addEventListener('hashchange',route);
+if(OK){sb.auth.onAuthStateChange(()=>loadMe());loadMe().then(route)}else route();
+</script></body></html>
